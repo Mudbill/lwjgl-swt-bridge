@@ -17,6 +17,8 @@ Usage
 
 [Download the jar](https://github.com/Mudbill/lwjgl-swt-bridge/releases) from the releases page and include it in your project's build path, and you'll be able to access the GLComposite class and the GLDrawLoop class.
 
+The GLComposite class requires an instance of GLDrawLoop, which you can extend. You'll be given these three methods to override and use for whatever OpenGL calls you'd like.
+
 ```java
 public class MyOpenGLClass extends GLDrawLoop {
 	@Override
@@ -34,20 +36,19 @@ public class MyOpenGLClass extends GLDrawLoop {
 }
 ```
 
-The GLComposite class requires an instance of GLDrawLoop, which you can extend. You'll be given these three methods to override and use for whatever OpenGL calls you'd like.
+Constructing the composite is similar to constructing a regular Composite widget, except you also need your loop class.
+Don't forget to call the `init()` method of the GLComposite widget before you open your Shell.
+
+PS: This is not the same `init()` method as in your custom class, however it is called during it.
 
 ```java
 GLComposite composite = new GLComposite(shell, SWT.NONE, new MyOpenGLClass());
 composite.init();
 ```
 
-Constructing the composite is similar to constructing a regular Composite widget, except you also need your loop class.
-Don't forget to call the `init()` method of the GLComposite widget before you open your Shell.
-PS: This is not the same `init()` method as in your custom class, however it is called during it.
-
 When you now call your Shell's `open()` method to display your GUI, the GLComposite class will activate the `update()` method every frame. Therefore you don't explicitly define a rendering loop, you only specify a single iteration of it and the GLComposite will take care of updating it based on the refresh rate of the GUI.
 
-Feel free to study at the BridgeFormExample.java class included in the source code for reference.
+Feel free to study the BridgeFormExample.java class included in the source code for reference.
 
 Bugs
 -------

@@ -27,6 +27,9 @@ public class MyOpenGLClass extends GLDrawLoop {
 	}
 	@Override
 	protected void update() {
+		if(this.getInputHandler().getKeyPressed('a'))
+			GL11.glClearColor(1, 0, 0, 1); // red
+			
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 	}
 	@Override
@@ -35,6 +38,8 @@ public class MyOpenGLClass extends GLDrawLoop {
 	}
 }
 ```
+
+To get input from within the composite itself, like mouse clicks or keyboard presses, use the `getInputHandler()` method available, which returns `InputHandler` and can be used to check the state of mouse and keyboard buttons, mouse X and Y position and scroll wheel delta.
 
 Constructing the composite is similar to constructing a regular Composite widget, except you also need your loop class.
 Don't forget to call the `init()` method of the GLComposite widget before you open your Shell.
@@ -48,7 +53,8 @@ composite.init();
 
 When you now call your Shell's `open()` method to display your GUI, the GLComposite class will activate the `update()` method every frame. Therefore you don't explicitly define a rendering loop, you only specify a single iteration of it and the GLComposite will take care of updating it based on the refresh rate of the GUI.
 
-Feel free to study the BridgeFormExample.java class included in the source code for reference.
+The above example will simply draw the entire composite green until 'a' is held on the keyboard, where it will change to red.
+Feel free to study the BridgeFormExample.java class included in the source code for additional examples.
 
 Bugs
 -------

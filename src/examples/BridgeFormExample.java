@@ -97,7 +97,7 @@ public class BridgeFormExample {
 			@Override
 			protected void init() {
 				GL11.glClearColor(0, 0, 1, 1);
-				System.out.println("Init first context, with clear color set to blue.");
+				System.out.println("Init second context, with clear color set to blue.");
 			}
 			@Override
 			protected void update() {

@@ -1,3 +1,5 @@
+**Note:** This is for LWJGL 2. If you're using LWJGL 3, go [here](https://github.com/Mudbill/lwjgl3-swt-bridge)
+
 lwjgl-swt-bridge
 ======
 
